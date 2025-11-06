@@ -1,0 +1,37 @@
+# Build + compiler output
+/build/
+JUCE_build/
+Lightbender_artefacts/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.sln
+*.vcxproj*
+*.lib
+*.exp
+*.pdb
+*.exe
+*.vst3
+*.dll
+.vs
+.vs/
+build/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE clutter
+.vscode/
+.idea/
+*.suo
+*.user
+*.opensdf
+*.sdf
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Backup folders
+JUCE_old/
