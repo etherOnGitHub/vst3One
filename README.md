@@ -90,7 +90,6 @@ Output is limiter-protected, but always test with low volume first.
 ## 🧑‍💻 Author
 
 **etherchild** — Full Stack Developer / Audio Designer  
-[GitHub: etherOnGitHub](https://github.com/etherOnGitHub)
 
 ---
 
