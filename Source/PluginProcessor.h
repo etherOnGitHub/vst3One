@@ -6,8 +6,8 @@ class LightbenderAudioProcessor : public juce::AudioProcessor
 public:
     LightbenderAudioProcessor();
     ~LightbenderAudioProcessor() override = default;
-	//==============================================================================
-	// AudioProcessor overrides
+    //==============================================================================
+    // AudioProcessor overrides
     //==============================================================================
     void prepareToPlay(double, int) override {}
     void releaseResources() override {}
@@ -27,10 +27,11 @@ public:
     void setStateInformation(const void*, int) override {}
 
 private:
-	int fftOrder = 10; // 2^10 = 1024
-	int fftSize = 1 << fftOrder; // bit shift left to calculate 2^fftOrder quicker operation than powers
-
-	juce::dsp::FFT fft{ fftOrder }; // JUCE FFT object for performing FFT operations
+    std::array<int, 7> fftSizes{ 64, 128, 256, 512, 1024, 2048, 4096 }; // Supported FFT sizes in a set array
+	int selectedIndex = 5; // Index to select the FFT size from the fftSizes array (2048 by default)
+    int fftSize = fftSizes[selectedIndex];
+	int fftOrder = static_cast<int>(std::log2(fftSize)); // Calculate FFT order based on selected size
+	fft = std::make_unique< juce::dsp::FFT >(fftOrder); // Unique pointer to JUCE FFT object
 	juce::HeapBlock<float> fftBuffer; // Buffer to hold audio data for FFT
 
 	float inputGain = 1.0f; // Gain applied to input signal before processing
