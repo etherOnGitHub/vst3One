@@ -26,6 +26,7 @@ juce_add_plugin(Lightbender
     PLUGIN_NAME "Lightbender"
     PRODUCT_NAME "Lightbender"
     COMPANY_NAME "aetherwaveAudio"
+    COMPANY_WEBSITE "https://aetherwave.dev"
 
     VERSION ${PROJECT_VERSION}
 

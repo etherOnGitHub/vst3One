@@ -9,9 +9,9 @@ public:
     //==============================================================================
     // AudioProcessor overrides
     //==============================================================================
-    void prepareToPlay(double, int) override {}
-    void releaseResources() override {}
-    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+    void prepareToPlay(double, int) override;
+    void releaseResources() override {};
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     const juce::String getName() const override { return "Lightbender"; }
     bool hasEditor() const override { return true; }
     juce::AudioProcessorEditor* createEditor() override;
@@ -29,9 +29,9 @@ public:
 private:
     std::array<int, 7> fftSizes{ 64, 128, 256, 512, 1024, 2048, 4096 }; // Supported FFT sizes in a set array
 	int selectedIndex = 5; // Index to select the FFT size from the fftSizes array (2048 by default)
-    int fftSize = fftSizes[selectedIndex];
-	int fftOrder = static_cast<int>(std::log2(fftSize)); // Calculate FFT order based on selected size
-	fft = std::make_unique< juce::dsp::FFT >(fftOrder); // Unique pointer to JUCE FFT object
+	int fftSize = 0; // Selected FFT size
+	int fftOrder = 0; // Order of the FFT (log2 of fftSize)
+    std::unique_ptr<juce::dsp::FFT> fft; // Unique pointer to JUCE FFT object
 	juce::HeapBlock<float> fftBuffer; // Buffer to hold audio data for FFT
 
 	float inputGain = 1.0f; // Gain applied to input signal before processing
